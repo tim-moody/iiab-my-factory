@@ -1,0 +1,12 @@
+#!/bin/bash -x
+# get Internet archive meta data for image file
+# parameter 1 - input file name
+
+if [ $# -eq 0 ]; then
+   echo "Usage: $0 filename (full name with prefix and .img)"
+   exit 1
+fi
+
+FILENAME=$1
+
+ia metadata $FILENAME > $FILENAME.json

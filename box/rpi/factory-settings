@@ -1,0 +1,6 @@
+#!/bin/bash -x
+# this file is sourced to supply current context
+
+PRODUCT=iiab
+VERSION=generic
+PLATFORM=`cat /etc/*release|grep ^ID=|cut -f2 -d=`

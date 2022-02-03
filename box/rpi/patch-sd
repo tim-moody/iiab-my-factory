@@ -1,0 +1,31 @@
+#!/bin/bash -x
+# resize the SD card to minimum size and zip it to image directory
+# assume /dev/sdg2 is partition to be shrunk
+# parameter 1 - output file name
+# parameter 2 - optional root device partition otherwise /dev/sdg2
+
+if [ $# -eq 0 ]; then
+   echo "Usage: $0 filename (no .img), optional rootfs device (like /dev/sdg3), optional image directory (like /curation/images), otherwise CWD"
+   exit 1
+fi
+
+# get the current settings
+source factory-settings
+
+FILENAME=$1.img
+
+if [ -z $2 ]; then
+   PARTITION=/dev/sdg2
+else
+   PARTITION=$2
+fi
+
+if [ ! -b $PARTITION ];then
+   echo "Device $PARTITION not found".
+   exit 1
+fi
+
+mount $PARTITION /mnt/sdcard
+
+cp patches/growpart /mnt/sdcard/usr/bin
+umount /mnt/sdcard

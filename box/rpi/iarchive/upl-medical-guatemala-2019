@@ -1,0 +1,17 @@
+#!/bin/bash
+
+IMG=iiab-6.7-190408-medical-gt2019-128g-ga0c8314.img
+echo $IMG
+
+ZIPMD5=`cat $IMG.zip.md5.txt |cut  --delimiter=' ' --fields=1`
+
+ia upload $IMG $IMG.zip --metadata="mediatype:software" --metadata="collection:internetinabox" \
+ --metadata="title:Medical Internet in a Box for Guatemala" \
+ --metadata="language:eng" \
+ --metadata="description:Medical Internet in a Box for Raspberry Pi<BR>Contains Medical Content curated for Guatemala<BR>Release: $IMG" \
+ --metadata="creator:Internet in a Box" \
+ --metadata="subject:rpi"  \
+ --metadata="subject:wikipedia" \
+ --metadata="subject:medical" \
+ --metadata="licenseurl:http://creativecommons.org/licenses/by-sa/4.0/" \
+ --metadata="zip_md5:$ZIPMD5"

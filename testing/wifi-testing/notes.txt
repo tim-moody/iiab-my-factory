@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/17774768/python-creating-a-shared-variable-between-threads
+sharing data between threads
+
+could look at leases
+
+/var/lib/misc/dnsmasq.leases

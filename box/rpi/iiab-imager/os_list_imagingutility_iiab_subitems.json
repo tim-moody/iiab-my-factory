@@ -1,0 +1,59 @@
+{
+  "os_list": [
+    {
+      "name": "Rpi OS Lite - minimum IIAB",
+      "description": "Pre 7.2 min services (see about services at http://wiki.laptop.org/go/IIAB/FAQ)",
+      "extract_size": 7151284224,
+      "extract_sha256": "061eb79e0003aff9d197f45efc69a2a25dedaf9e63528be3cc5e1bc0e1b358d2",
+      "image_download_size": 3220771067,
+      "release_date": "10/29/2020",
+      "zip.md5": "fd7d7ccfa00f1e60389a43d161f39f5b",
+      "url": "https://archive.org/download/iiab-7.2-201029-rpi_os_lite_iiab_lite-gdb1026a.img.zip/iiab-7.2-201029-rpi_os_lite_iiab_lite-gdb1026a.img.zip",
+      "icon": "https://raw.githubusercontent.com/iiab/iiab-factory/master/box/rpi/rpi-imager/iiab40.png"
+    },
+    {
+      "name": "Desktop w/ Medium IIAB Pre 7.2",
+      "description": "Raspberry Pi Desktop (no extras) with Medium Selection of IIAB Services",
+      "extract_size": 10963066880,
+      "extract_sha256": "b67673671f3804e0dc2dc1ffcab19acbc4f645214cf5cb8aa4d80bcb33aed83b",
+      "image_download_size": 5249536594,
+      "release_date": "10/28/2020",
+      "zip.md5": "3f2e206f1c65f4055b3e9dc52f090ac2",
+      "url": "https://archive.org/download/iiab-7.2-201028-desktop_medium_iiab-gf6b63e8.img.zip/iiab-7.2-201028-desktop_medium_iiab-gf6b63e8.img.zip",
+      "icon": "https://raw.githubusercontent.com/iiab/iiab-factory/master/box/rpi/rpi-imager/iiab40.png"
+    },
+    {
+      "name": "Full Desktop Big IIAB",
+      "description": "IIAB Pre 7.2 (Oct 2020) loaded onto Rasberry Pi OS Full Desktop -- Everything Maximum",
+      "extract_size": 17348542464,
+      "extract_sha256": "c5e04092fbb2a7df168fd221aca4b6dfba320c1686019dfe9fe961e51d989532",
+      "image_download_size": 7385116002,
+      "release_date": "10/28/2020",
+      "zip.md5": "0d21a6449f6de7e9b738e6cda9141b38",
+      "url": "https://archive.org/download/iiab-7.2-201028-full_desktop_big_iiab-g3357c56.img.zip/iiab-7.2-201028-full_desktop_big_iiab-g3357c56.img.zip",
+      "icon": "https://raw.githubusercontent.com/iiab/iiab-factory/master/box/rpi/rpi-imager/iiab40.png"
+    },
+    {
+      "name": "IIAB Release 7.1 Minimum Version Content Ready",
+      "description": "Internet in a Box with minimal services ready to have content added",
+      "extract_size": 5225291776,
+      "extract_sha256": "31dc93adbb1e42d28a45de1be096d8b4f44133d072b6842a701254976b8fc268",
+      "image_download_size": 2059292637,
+      "release_date": "2020-07-12 22:40:49",
+      "zip.md5": "19d80d82eb47995cd3a3dda557d4d53d",
+      "url": "https://archive.org/download/iiab-7.1-200712-min-content-ready-g54406367.img/iiab-7.1-200712-min-content-ready-g54406367.img.zip",
+      "icon": "https://raw.githubusercontent.com/iiab/iiab-factory/master/box/rpi/rpi-imager/iiab40.png"
+    },
+    {
+      "name": "IIAB Release 7.1 Medical Edition Content Ready",
+      "description": "Internet in a Box Medical Edition Ready for Adding Content",
+      "extract_size": 5363200000,
+      "extract_sha256": "6965fc46886c5ea15be63c9c29eba3d7534bb82dcfdfe8c528ee9f35234cccdd",
+      "image_download_size": 2035285776,
+      "release_date": "2020-06-13 16:50:42",
+      "zip.md5": "d9256cdb8c69242d14184a06291b760c",
+      "url": "https://archive.org/download/iiab-7.1-200612-medical-content-ready-g17253d4.img/iiab-7.1-200612-medical-content-ready-g17253d4.img.zip",
+      "icon": "https://raw.githubusercontent.com/iiab/iiab-factory/master/box/rpi/rpi-imager/iiab40.png"
+    }
+  ]
+}

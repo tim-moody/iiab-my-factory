@@ -1,0 +1,51 @@
+#!/bin/bash
+# paramters lang version
+if [ $# -eq 0 ]; then
+echo "Usage: $0 <language code (e.g. en)> <version (e.g. 17-10)>";
+echo "";
+exit 1;
+fi
+
+LANG=$1
+VERSION=$2
+APK=io.iiab.kiwix.wikipedia.medicine.$LANG-$VERSION.apk
+
+echo $APK
+
+# ia uses different language codes
+
+case "$LANG" in
+  ar)
+    LANGCODE="ara"
+    DESC="Offline Medical Wikipedia in Arabic"
+    ;;
+  en)
+    LANGCODE="eng"
+    DESC="Offline Medical Wikipedia"
+    ;;
+  es)
+    LANGCODE="spa"
+    DESC="Offline Medical Wikipedia in Spanish"
+
+    ;;
+  fr)
+    LANGCODE="fre"
+    DESC="Offline Medical Wikipedia in French"
+    ;;
+
+  *)
+    echo "Internet Archive Language Code unknown"
+    exit 1
+esac
+
+echo $LANGCODE, $DESC
+
+ia upload $APK apks/$APK --metadata="mediatype:software" --metadata="collection:internetinabox" \
+ --metadata="language:$LANGCODE" \
+ --metadata="description:$DESC" \
+ --metadata="creator:IIAB" \
+ --metadata="subject:android"  \
+ --metadata="subject:wikipedia" \
+ --metadata="subject:medical" \
+ --metadata="licenseurl:http://creativecommons.org/licenses/by-sa/4.0/"
+

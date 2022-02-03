@@ -1,0 +1,27 @@
+#!/bin/bash
+# resize target SD card
+# assume /dev/sdb is card
+# parameter 1 - optional root device partition otherwise /dev/sdb
+
+if [ -z $1 ]; then
+   SDCARD=/dev/sdb
+else
+   SDCARD=$1
+fi
+
+partprobe $SDCARD
+
+BOOTPART=$SDCARD"1"
+FSPART=$SDCARD"2"
+umount $BOOTPART $FSPART
+
+growpart $SDCARD 2
+sleep 5 # wait for card to be read
+partprobe $SDCARD
+
+umount $BOOTPART $FSPART
+e2fsck -f $FSPART
+
+resize2fs $FSPART
+
+umount $BOOTPART $FSPART

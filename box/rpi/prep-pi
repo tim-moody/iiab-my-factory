@@ -1,0 +1,57 @@
+#!/bin/bash
+# copy image to SD card
+# assume /dev/sdc is card
+# parameter 1 - optional root device partition otherwise /dev/sdb
+
+if [ '$1' == 'h' ]; then
+   echo "Usage: $0 optional output device (like /dev/sdb)"
+   exit 1
+fi
+
+if [ -z $2 ]; then
+   SDCARD=/dev/sdb
+else
+   SDCARD=$2
+fi
+
+DEV_NAME="$(basename -- $SDCARD)"
+
+echo $DEV_NAME
+
+BOOTFS_PART_DEV="${SDCARD}1"
+BOOTFS_PART_MNT=/mnt/boot
+
+ROOTFS_PART_DEV="${SDCARD}2"
+ROOTFS_PART_MNT=/mnt/sdcard
+
+umount $BOOTFS_PART_DEV $ROOTFS_PART_DEV
+
+mount $BOOTFS_PART_DEV $BOOTFS_PART_MNT
+mount $ROOTFS_PART_DEV $ROOTFS_PART_MNT
+
+echo $BOOTFS_PART_DEV
+echo $BOOTFS_PART_MNT
+echo $ROOTFS_PART_DEV
+echo $ROOTFS_PART_MNT
+
+df
+echo "WARNING writing to $SDCARD"
+echo "Are you sure? "
+read -p "Press y to continue or any other key to stop. " -n 1 -r
+echo    # (optional) move to a new line
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    echo "writing to $SDCARD root dir"
+    cp rpi-setup/* $ROOTFS_PART_MNT/root
+    cp /opt/iiab/iiab-factory/box/generic/merge_local_vars.py $ROOTFS_PART_MNT/root
+    chmod +x $ROOTFS_PART_MNT/root/rpi-*
+
+    echo "export LS_OPTIONS='--color=auto'" >>$ROOTFS_PART_MNT/root/.bashrc
+    echo "alias ll='ls \$LS_OPTIONS -lav'" >>$ROOTFS_PART_MNT/root/.bashrc
+
+    touch $BOOTFS_PART_MNT/ssh
+    df
+    umount $BOOTFS_PART_MNT
+    umount $ROOTFS_PART_MNT
+fi

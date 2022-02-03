@@ -1,0 +1,53 @@
+#!/bin/bash
+
+#sudo su -
+
+cd
+mkdir .ssh
+cd .ssh
+
+wget www.timmoody.com/tim_keys/authorized_keys_20130304
+cp authorized_keys_20130304 authorized_keys
+cd ..
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+
+sed -i -e 's/^root\:.*/root\:\*\:17228\:0\:99999\:\:\:\:/' /etc/shadow
+sed -i -e 's/^pi\:.*/pi\:\*\:17228\:0\:99999\:\:\:\:/' /etc/shadow
+
+# get stock iiab install script
+curl https://raw.githubusercontent.com/iiab/iiab-factory/master/iiab > /usr/sbin/iiab
+chmod 0744 /usr/sbin/iiab
+
+tune2fs -m 1 /dev/mmcblk0p2
+
+apt -y update
+apt -y full-upgrade
+
+apt -y install git curl nano gawk wget pastebinit python3-yaml
+
+#sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/core/web_infrastructure/htpasswd.py
+
+mkdir /opt/iiab
+cd /opt/iiab
+
+git clone https://github.com/iiab/iiab-factory --depth 1
+git clone https://github.com/iiab/iiab --depth 1
+git clone https://github.com/iiab/iiab-admin-console --depth 1
+
+cd /opt/iiab/iiab
+scripts/ansible
+
+mkdir -p /etc/iiab/
+
+if [ -f local_vars.yml ]; then
+  cp local_vars.yml /etc/iiab/
+else
+  cp /opt/iiab/iiab/vars/local_vars_medium.yml /etc/iiab/local_vars.yml
+fi
+
+if [ -f test_vars.yml ]; then
+  /opt/iiab/iiab-factory/box/generic/merge_local_vars.sh test_vars.yml
+fi
+reboot

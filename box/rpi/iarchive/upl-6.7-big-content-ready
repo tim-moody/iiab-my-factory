@@ -1,0 +1,19 @@
+#!/bin/bash
+
+IMG=iiab-6.7-190315-big-content-ready-ga0c8314.img
+echo $IMG
+
+ZIPMD5=`cat $IMG.zip.md5.txt |cut  --delimiter=' ' --fields=1`
+
+ia upload $IMG $IMG.zip --metadata="mediatype:software" --metadata="collection:internetinabox" \
+ --metadata="title:Internet in a Box 6.7 Big Content Ready" \
+ --metadata="language:eng" \
+ --metadata="description:Internet in a Box Release 6.7 Big Install for Raspberry Pi<BR>Contains no Content<BR>Release: $IMG" \
+ --metadata="creator:Internet in a Box" \
+ --metadata="subject:rpi"  \
+ --metadata="subject:wikipedia" \
+ --metadata="subject:medical" \
+ --metadata="licenseurl:http://creativecommons.org/licenses/by-sa/4.0/" \
+ --metadata="zip_md5:$ZIPMD5"
+
+#--metadata="zip_md5:7eac418b1495799037a35cf39d2c1a14"

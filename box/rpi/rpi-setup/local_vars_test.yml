@@ -1,0 +1,11 @@
+# Put variables here to override /opt/iiab/iiab/vars/default_vars.yml
+
+# Test menu def repo
+#menu_files_repo : iiab-users/js-menu-files/
+menu_files_repo : iiab-share/js-menu-files-test/
+iiab_hostname: box-pi-test
+host_ssid: IIAB in a Pi
+hostapd_secure: True
+hostapd_password: cdsa0han4!gsf
+nodocs: True
+openvpn_handle: tfm-test

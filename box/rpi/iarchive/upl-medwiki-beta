@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+echo "Usage: $0 <image file name (without .zip)>";
+echo "";
+exit 1;
+fi
+
+IMG=$1
+
+echo $IMG
+
+ia upload $IMG $IMG.zip --metadata="mediatype:software" --metadata="collection:internetinabox" \
+ --metadata="title:Medical Internet in a Box Beta" \
+ --metadata="language:eng" \
+ --metadata="description:Medical Internet in a Box Beta for Raspberry Pi<BR>Release: $IMG" \
+ --metadata="creator:Internet in a Box" \
+ --metadata="subject:rpi"  \
+ --metadata="subject:wikipedia" \
+ --metadata="subject:medical" \
+ --metadata="licenseurl:http://creativecommons.org/licenses/by-sa/4.0/"
+

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+tune2fs -m 1 /dev/mmcblk0p2
+
+apt -y update
+apt -y full-upgrade
+
+apt -y install git curl nano gawk wget pastebinit
+
+#sed -i 's/StrictVersion/LooseVersion/g' /usr/lib/python2.7/dist-packages/ansible/modules/core/web_infrastructure/htpasswd.py
+
+mkdir /opt/iiab
+cd /opt/iiab
+
+git clone https://github.com/iiab/iiab-factory --depth 1
+git clone https://github.com/iiab/iiab --depth 1
+git clone https://github.com/iiab/iiab-admin-console --depth 1
+
+cd /opt/iiab/iiab
+scripts/ansible
+
+mkdir -p /etc/iiab/
+
+if [ -f local_vars.yml ]; then
+  cp local_vars.yml /etc/iiab/
+else
+  cp /opt/iiab/iiab/vars/local_vars_medium.yml /etc/iiab/
+fi
+
+if [ -f test_vars.yml ]; then
+  /opt/iiab/iiab-factory/box/generic/merge_local_vars.sh test_vars.yml
+fi
+reboot

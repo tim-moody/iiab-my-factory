@@ -1,0 +1,18 @@
+#!/bin/bash
+
+IMG=iiab-6.4-180321-experimental-only-g3ea4256.img
+    
+echo $IMG
+
+ZIPMD5=`cat $IMG.zip.md5.txt |cut  --delimiter=' ' --fields=1`
+
+ia upload $IMG $IMG.zip --metadata="mediatype:software"  \
+ --metadata="title:Internet in a Box 6.4 Experimental" \
+ --metadata="language:eng" \
+ --metadata="description:Experimental Version of Internet in a Box for Raspberry Pi<BR>Contains no Content<BR>Release: $IMG" \
+ --metadata="creator:Internet in a Box" \
+ --metadata="subject:rpi"  \
+ --metadata="subject:internet in a box" \
+ --metadata="subject:experimental" \
+ --metadata="licenseurl:http://creativecommons.org/licenses/by-sa/4.0/" \
+ --metadata="zip_md5:$ZIPMD5"

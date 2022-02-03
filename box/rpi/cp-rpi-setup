@@ -1,0 +1,6 @@
+#!/bin/bash
+# copy image to SD card
+# assume /dev/sdc is card
+
+df
+cp /rpi-setup/* /media/usb0

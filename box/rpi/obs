@@ -1,0 +1,26 @@
+#!/bin/bash
+
+./ia-obsolete iiab-6.4-170926-medwiki-iiab-alpha-g3ea4256.img
+./ia-obsolete iiab-6.4-171101-medwiki-beta-g3ea4256.img
+./ia-obsolete iiab-6.4-171107-medwiki-beta-16G-g3ea4256.img
+./ia-obsolete iiab-6.4-171118-medbox-beta2-32G-g3ea4256.img
+./ia-obsolete iiab-6.4-171212-medbox-beta2.1-32G-g3ea4256.img
+./ia-obsolete iiab-6.4-180207-medbox-beta2.1-content-ready-g3ea4256.img
+./ia-obsolete iiab-6.4-180219-medbox-beta2.1-nigeria-g3ea4256.img
+./ia-obsolete iiab-6.4-180224-medbox-beta2.2-32G-g3ea4256.img
+./ia-obsolete iiab-6.4-180305-medbox-beta2.2-SAsia-32G-g3ea4256.img
+./ia-obsolete iiab-6.4-180313-medbox-beta2.2-uganda-16G-g3ea4256.img
+./ia-obsolete iiab-6.4-180319-medbox-beta2.2-content-ready-g3ea4256.img
+./ia-obsolete iiab-6.4-180829-medbox-beta3.0-content-ready-g3ea4256.img
+./ia-obsolete iiab-6.4-180907-medbox-beta3.0-es-32G-g3ea4256.img
+./ia-obsolete iiab-6.6-180927-medical-min-content-ready-g6653593.img
+./ia-obsolete iiab-6.6-181112-medical-beta3.1-nigeria-16G-g6653593.img
+./ia-obsolete iiab-6.7-190314-medical-beta3.6-content-ready-ga0c8314.img
+./ia-obsolete iiab-6.7-190315-big-content-ready-ga0c8314.img
+./ia-obsolete iiab-6.7-190315-medium-content-ready-ga0c8314.img
+./ia-obsolete iiab-6.7-190315-min-content-ready-ga0c8314.img
+./ia-obsolete iiab-6.7-RC2-190121-medical-beta3.5-content-ready-g368417f.img
+./ia-obsolete iiab-6.7-RC3-190204-medical-beta3.5-content-ready-g7949908.img
+./ia-obsolete iiab-PRE-7.0-190505-min-content-ready-g4808148.img
+./ia-obsolete iiab-PRE-7.0-190716-medical-beta4.0-content-ready-g78e9a1f2.img
+./ia-obsolete iiab-PRE7.1-200315-min-content-ready-2020-02-13-raspbian-lite-g1b4f928.img

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#sudo su -
+
+cd
+mkdir .ssh
+cd .ssh
+
+wget www.timmoody.com/tim_keys/authorized_keys_20130304
+cp authorized_keys_20130304 authorized_keys
+cd ..
+
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+
+sed -i -e 's/^root\:.*/root\:\*\:17228\:0\:99999\:\:\:\:/' /etc/shadow
+sed -i -e 's/^pi\:.*/pi\:\*\:17228\:0\:99999\:\:\:\:/' /etc/shadow
+
+# get stock iiab install script
+curl https://raw.githubusercontent.com/iiab/iiab-factory/master/iiab > /usr/sbin/iiab
+chmod 0744 /usr/sbin/iiab
+
+nano ~/.bashrc
+
+source ~/.bashrc
