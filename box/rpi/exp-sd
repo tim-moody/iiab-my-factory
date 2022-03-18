@@ -21,9 +21,9 @@ then
   SDCARD2=${SDCARD}2
   echo $SDCARD2
   umount $SDCARD2
-  mount $SDCARD2 /mnt/sdcard  
-  if [ -f /mnt/sdcard/.resize-rootfs ];then\
-    rm /mnt/sdcard/.resize-rootfs
+  mount $SDCARD2 /mnt/sdcard
+  if [ -f /mnt/sdcard/.expand-rootfs ];then\
+    rm /mnt/sdcard/.expand-rootfs
     umount $SDCARD2
     echo "Starting resizing"
     parted -s $SDCARD resizepart 2 100%
