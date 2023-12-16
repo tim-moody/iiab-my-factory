@@ -65,7 +65,9 @@ start_time = None
 CLONE_DEVS = False
 VDEV_SUFFIX = 'vdev'
 VMAC_BASE = '02:00:00:00:00:' # for local 2nd least significant bit of first octet must be 1 (2, 6, A, E)
+HOST='10.10.10.10'
 START_URL = '/home/index.html' # no protocol or host
+STATUS_URL = '/wifi_test/stat'
 SLEEP_SECONDS = 5 # this was not better than 1 on two instances and was in fact worse
 # SLEEP_SECONDS = 1
 WIFI_DEV_PREFIX = 'wl'
@@ -122,7 +124,7 @@ def monitor_dev(dev):
     global usb_wifi_ifaces
 
     # await connect_wifi(dev) # try to get a connection
-    url = '/stat'
+    url = STATUS_URL
     while run_flag:
         client_ip = usb_wifi_ifaces[dev].get('ip-addr', None)
         #print(client_ip)
@@ -190,7 +192,7 @@ def one_dev(dev):
         #time.sleep(random.uniform(.5 * SLEEP_SECONDS, 1.5 * SLEEP_SECONDS)) # makes no difference
         time.sleep(SLEEP_SECONDS)
 
-def get_html(client_ip, page_url, port=80, server_ip='172.18.96.1'):
+def get_html(client_ip, page_url, port=80, server_ip=HOST):
     print_msg('Retrieving page for ' + client_ip)
     BUF_SIZE = 4096
 

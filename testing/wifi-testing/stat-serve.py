@@ -7,11 +7,13 @@ import json
 PORT = 10080
 server_address = ('', PORT)
 
+# change to use nginx proxy 12/15/2023
+
 class MyHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(s):
-        if s.path == '/test':
+        if s.path == '/wifi_test/test':
             s.test_resp()
-        elif s.path == '/stat':
+        elif s.path == '/wifi_test/stat':
             s.get_wifi_stat()
         else:
             super().do_GET()
