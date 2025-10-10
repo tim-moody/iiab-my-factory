@@ -1,12 +1,26 @@
 #!/bin/bash
 # resize target SD card
-# assume /dev/sdb is card
-# parameter 1 - optional root device partition otherwise /dev/sdb
+# assume /dev/sdc is card
+# parameter 1 - optional root device partition otherwise /dev/sdc
 
 if [ -z $1 ]; then
-   SDCARD=/dev/sdb
+   SDCARD=/dev/sdc
 else
    SDCARD=$1
+fi
+
+# make sure we don't wipe a drive
+fs_uuid=$(blkid -o value -s UUID "${SDCARD}1")
+echo $fs_uuid
+
+if [ "$fs_uuid" == "bd15d195-c7ae-41ce-a452-2cbe78f69f09" ]; then
+    echo "This is the Backup Drive"
+    exit 1
+fi
+
+if [ "$fs_uuid" == "e8f5bf4f-d6c3-4c50-bcf7-fba0a276652c" ]; then
+    echo "This is the Internal Files Drive"
+    exit 1
 fi
 
 partprobe $SDCARD

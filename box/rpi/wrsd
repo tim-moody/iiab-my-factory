@@ -2,10 +2,10 @@
 # copy image to SD card
 # assume /dev/sdc is card
 # parameter 1 - image file name
-# parameter 2 - optional root device partition otherwise /dev/sdb
+# parameter 2 - optional root device partition otherwise /dev/sdc
 
 if [ $# -eq 0 ]; then
-   echo "Usage: $0 filename (with .img), optional output device (like /dev/sdb)"
+   echo "Usage: $0 filename (with .img), optional output device (like /dev/sdc)"
    exit 1
 fi
 
@@ -17,9 +17,23 @@ if [ ! -f $1 ]; then
 fi
 
 if [ -z $2 ]; then
-   SDCARD=/dev/sdb
+   SDCARD=/dev/sdc
 else
    SDCARD=$2
+fi
+
+# make sure we don't wipe a drive
+fs_uuid=$(blkid -o value -s UUID "${SDCARD}1")
+echo $fs_uuid
+
+if [ "$fs_uuid" == "bd15d195-c7ae-41ce-a452-2cbe78f69f09" ]; then
+    echo "This is the Backup Drive"
+    exit 1
+fi
+
+if [ "$fs_uuid" == "e8f5bf4f-d6c3-4c50-bcf7-fba0a276652c" ]; then
+    echo "This is the Internal Files Drive"
+    exit 1
 fi
 
 RESIZE=0
@@ -29,7 +43,7 @@ BOOTPART=$SDCARD"1"
 FSPART=$SDCARD"2"
 echo "boot part is $BOOTPART fs part is $FSPART"
 
-df
+lsblk
 echo "WARNING writing to $SDCARD"
 echo "Are you sure? "
 read -p "Press y to continue or any other key to stop. " -n 1 -r
